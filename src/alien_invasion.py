@@ -10,7 +10,7 @@ from alien import Alien
 class AlienInvasion:
     """Gerencia o jogo e seus comportamentos."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Construtor da classe que inicializa o jogo e cria os recursos básicos"""
         pygame.init()
         self.settings = Settings()
@@ -26,15 +26,15 @@ class AlienInvasion:
         # Mudando a cor do plano de fundo em RGB
         self.bg_color = self.settings.bg_color
 
-        self.bullets = (
+        self.bullets : pygame.sprite.Group = (
             pygame.sprite.Group()
         )  # Cria um grupo para armazenar os projéteis disparados pela nave
 
-        self.aliens = (
+        self.aliens : pygame.sprite.Group = (
             pygame.sprite.Group()
         )  # Cria um grupo para armazenar os alienígenas presentes no jogo
 
-    def create_fleet(self):
+    def create_fleet(self) -> None:
         """Cria uma frota de alienígenas."""
         # Cria um alienígena e calcula o número de alienígenas em uma linha
         # O espaçamento entre os alienígenas é igual a um alienígena
@@ -60,7 +60,7 @@ class AlienInvasion:
                 alien.rect.y = alien.y
                 self.aliens.add(alien)
 
-    def run_game(self):
+    def run_game(self) -> None:
         """Cria um laço de repetição para a tela sempre ficar visível até
         que o usuário decida fechar a janela."""
 
