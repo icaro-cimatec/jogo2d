@@ -1,10 +1,13 @@
 import pygame
+
 from bullet import Bullet
+from ship import Ship
+from settings import Settings
 
 class BulletManager:
     """REsponsável apenas por criar, atualizar e desenhar os projetéis"""
     
-    def __init__(self, screen, settings, ship) -> None:
+    def __init__(self, screen: pygame.Surface, settings: Settings, ship: Ship) -> None:
         self.screen = screen
         self.settings = settings
         self.ship = ship

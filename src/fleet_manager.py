@@ -1,11 +1,14 @@
 import sys
 import pygame
+
 from alien import Alien
+from settings import Settings
+from ship import Ship
 
 class FleetManager:
     """Responsável por criar e gerenciar a fronta de alienígenas"""
 
-    def __init__(self, screen, settings, ship, alien_class = Alien) -> None:
+    def __init__(self, screen: pygame.Surface, settings: Settings, ship: Ship, alien_class = Alien) -> None:
         self.screen = screen
         self.settings = settings
         self.ship = ship
@@ -56,7 +59,7 @@ class FleetManager:
     def _check_fleet_edges(self) -> None:
         """Responde apropriadamente se algum alienígena tiver alcançado uma borda"""
         for alien in self.aliens.sprites():
-            if alien.check_adges():
+            if alien.check_edges():
                 self._change_fleet_direction()
                 break
 
@@ -64,7 +67,7 @@ class FleetManager:
         """Desce a frota e muda sua direção"""
         for alien in self.aliens.sprites():
             alien.rect.y += self.settings.fleet_drop_speed
-        self.settings.fleet_drop_speed *= -1
+        self.settings.fleet_direction *= -1
 
     def _check_ship_collision(self) -> None:
         """Verifica se a nave colidiou com algum alienígena"""

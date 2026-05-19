@@ -1,9 +1,12 @@
 import sys
 import pygame
 
+from ship import Ship
+from bullet_manager import BulletManager
+
 class GameEventHandler:
     """Responsável apenas por ler e tratar os eventos dos teclados/janelas"""
-    def __init__(self, ship, bullet_manager) -> None:
+    def __init__(self, ship: Ship, bullet_manager: BulletManager) -> None:
         self.ship = ship
         self.bullet_manager = bullet_manager
 
@@ -24,7 +27,7 @@ class GameEventHandler:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
         elif event.key == pygame.K_SPACE:
-            self.bullet_manager._fire_bullet()
+            self.bullet_manager._fire_bullets()
 
     def _handle_keyup(self, event: pygame.event.Event) -> None:
         """Responde a eventos de soltura de teclas"""

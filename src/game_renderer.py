@@ -1,10 +1,11 @@
 import pygame
+from ship import Ship
 
 class GameRenderer:
     """Responsável apenas por desenhar os elementos do jogo na tela"""
 
-    def __init__(self, screen, bg_color, ship, bullets, aliens) -> None:
-        self.screend = screen
+    def __init__(self, screen: pygame.Surface, bg_color: tuple, ship: Ship, bullets: pygame.sprite.Group, aliens: pygame.sprite.Group) -> None:
+        self.screen = screen
         self.bg_color = bg_color
         self.ship = ship
         self.bullets = bullets
